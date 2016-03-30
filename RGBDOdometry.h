@@ -18,7 +18,7 @@ class RGBDOdometry
 {
 
 public:
-    RGBDOdometry(KinectCamera * KinectCamera) {}
+    RGBDOdometry(KinectCamera * kinectCamera):camera(kinectCamera) {}
 
     static void cvtDepth2Cloud( const cv::Mat& depth, cv::Mat& cloud, const cv::Mat& cameraMatrix )
     {
