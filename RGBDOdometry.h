@@ -110,10 +110,16 @@ public:
         const float maxDepthDiff = 0.07f; //in meters
 
 
+        float vals[] = {528., 0., 320,
+                    0., 528., 240,
+                    0., 0., 1.};
+
+        const cv::Mat cameraMatrix = cv::Mat(3,3,CV_32FC1,vals);
+
         bool isFound = cv::RGBDOdometry( Rt, cv::Mat(),
                                         grayImage0, depthFlt0, cv::Mat(),
                                         grayImage1, depthFlt1, cv::Mat(),
-                                        *camera->intrinsicMatrix, minDepth, maxDepth, maxDepthDiff,
+                                        cameraMatrix, minDepth, maxDepth, maxDepthDiff,
                                         iterCounts, minGradMagnitudes,  cv::RIGID_BODY_MOTION);
 
         Eigen::Matrix4d T;
